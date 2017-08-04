@@ -34,7 +34,6 @@ def textIdfChiEngReturnList(text):
 			if currentChr != ' ':    
 				chi=text[i:i+1]
 				charList.append(chi)
-	
 	return charList
 
 
@@ -119,11 +118,9 @@ def RNNOuntput(allSource,date_range,raw_dir,output_dir):
 						label.append('0')
 
 				if s_date<=article_date<=e_date: #文章日期是否在範圍內
-
 					output_dic['Articles'].update({str(aID):{'sentence':raw_sentence,'label':label}})
 					
 
-			# print(output_content)
 			if output_dic != {}:
 				output_file_name='_'.join([date_range[0],date_range[1]])
 				output_file_name=output_dir+source+'('+mark_content['Board_name']+')_'+output_file_name
@@ -134,7 +131,7 @@ def RNNOuntput(allSource,date_range,raw_dir,output_dir):
 
 				#輸出單一label檔
 				for c in range(1,12):
-					copy_dic=copy.copy(output_dic)
+					# copy_dic=copy.copy(output_dic)
 					c_id=str(c)
 					singleLabel_dic={
 						'Board_name':output_dic['Board_name'],
@@ -162,19 +159,17 @@ def RNNOuntput(allSource,date_range,raw_dir,output_dir):
 						# print(aID,c_id,single_label,len(single_label))
 						# print('-'*50)
 						
-					if len(singleLabel_dic['Articles'].keys())!=0:
+					if len(singleLabel_dic['Articles'].keys())!=0: #有文章才輸出
 						with open(output_file_name+'_label'+c_id+'.json','w',encoding='utf-8') as out:
 							json.dump(singleLabel_dic,out,indent=2,ensure_ascii=False)
-
 
 
 def main():
 	source=['ptt','mobile01']
 	date_range=['2015-12','2017-07']
 	raw_dir='./Data_db/Data_mark/'
-	output_dir='Data_db/Data_RNN/'
+	output_dir='./Data_db/Data_RNN/'
 	RNNOuntput(source,date_range,raw_dir,output_dir)
-	# RNNOuntput()
 
 
 if __name__ == '__main__':

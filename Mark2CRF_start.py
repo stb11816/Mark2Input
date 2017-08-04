@@ -16,12 +16,9 @@ def main():
 	output_match    ='./Data_db/(3-1)Data_match/'
 	output_match_n  ='./Data_db/(3-2)Data_match_n/'
 
-	# Mark2CRF_preprocess.main(source,date_range,raw_dir,output_raw,output_seed,output_label)
-
-	# Mark2CRF_CKIP_articles.process_Articles(output_raw,output_raw_ckip)
-
-	# Mark2CRF_CKIP_seed.process_Seeds(output_seed,output_seed_ckip)
-
+	Mark2CRF_preprocess.main(source,date_range,raw_dir,output_raw,output_seed,output_label)
+	Mark2CRF_CKIP_articles.process_Articles(output_raw,output_raw_ckip)
+	Mark2CRF_CKIP_seed.process_Seeds(output_seed,output_seed_ckip)
 	Mark2CRF_match.match(output_raw_ckip,output_label,output_match,space=output_match_n)
 
 
