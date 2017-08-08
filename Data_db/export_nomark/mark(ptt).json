@@ -1,0 +1,269 @@
+{
+    "Board_name": "PTT_mark",
+    "Date_range": "2016-07",
+    "Source_name": "PTT",
+    "Source_type": "社群論壇",
+    "Articles": {
+        "M.1496853071.A.F2A": {
+            "Board_name": "VideoCard",
+            "Url": "https://www.ptt.cc/bbs/VideoCard/M.1496853071.A.F2A.html",
+            "Author": [
+                "ch4389411 "
+            ],
+            "Title": "預算2-3000",
+            "Date": "2017-06-08",
+            "Time": "00:31",
+            "Type": "請益",
+            "ID": "M.1496853071.A.F2A",
+            "Mark": "＃標題＃預算2-3000\n請問預算只有2-3000\n只求虹彩六號順玩\n買什麼顯卡cp比較高？power大概要多少\ngeforce 9600 gt有辦法玩嗎？\n--\n",
+            "Summary": {
+                "2-3000": {
+                    "concept": {
+                        "金額": [
+                            6,
+                            19
+                        ]
+                    },
+                    "relation": {
+                        "want": [
+                            {
+                                "term1": [
+                                    "顯卡",
+                                    "38"
+                                ],
+                                "cue": "預算",
+                                "term2": [
+                                    "2-3000",
+                                    "6"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "虹彩六號順玩": {
+                    "concept": {
+                        "功能": [
+                            28
+                        ]
+                    },
+                    "relation": {}
+                },
+                "顯卡": {
+                    "concept": {
+                        "商品種類": [
+                            38
+                        ]
+                    },
+                    "relation": {
+                        "want": [
+                            {
+                                "term1": [
+                                    "顯卡",
+                                    "38"
+                                ],
+                                "cue": "預算",
+                                "term2": [
+                                    "2-3000",
+                                    "6"
+                                ]
+                            }
+                        ],
+                        "part of": [
+                            {
+                                "term1": [
+                                    "顯卡",
+                                    "38"
+                                ],
+                                "cue": "Power",
+                                "term2": [
+                                    "power",
+                                    "46"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "cp比較高": {
+                    "concept": {
+                        "評論": [
+                            40
+                        ]
+                    },
+                    "relation": {}
+                },
+                "power": {
+                    "concept": {
+                        "規格": [
+                            46
+                        ]
+                    },
+                    "relation": {
+                        "part of": [
+                            {
+                                "term1": [
+                                    "顯卡",
+                                    "38"
+                                ],
+                                "cue": "Power",
+                                "term2": [
+                                    "power",
+                                    "46"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "geforce ": {
+                    "concept": {
+                        "型號": [
+                            57
+                        ]
+                    },
+                    "relation": {
+                        "has": [
+                            {
+                                "term1": [
+                                    "geforce ",
+                                    "57"
+                                ],
+                                "cue": "geforce",
+                                "term2": [
+                                    "9600 gt",
+                                    "65"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "9600 gt": {
+                    "concept": {
+                        "型號": [
+                            65
+                        ]
+                    },
+                    "relation": {
+                        "has": [
+                            {
+                                "term1": [
+                                    "geforce ",
+                                    "57"
+                                ],
+                                "cue": "geforce",
+                                "term2": [
+                                    "9600 gt",
+                                    "65"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "M.1451296451.A.03C": {
+            "Board_name": "CD-R",
+            "Url": "https://www.ptt.cc/bbs/CD-R/M.1451296451.A.03C.html",
+            "Author": [
+                "chenszhanx "
+            ],
+            "Title": "求推薦安靜的外接光碟機",
+            "Date": "2015-12-28",
+            "Time": "17:54",
+            "Type": "請益",
+            "ID": "M.1451296451.A.03C",
+            "Mark": "＃標題＃求推薦安靜的外接光碟機\n想找一台外出用的外接光碟機\n需求是SLIM跟安靜的DVD讀取\n使用機器是win 10\n台灣的選擇好象非常少\n覺得三星的好像不錯\n但是買不到的樣子？\n-----\nSent from JPTT on my American Megatrends Inc. AMIDuOS.\n--\n",
+            "Summary": {
+                "外接光碟機": {
+                    "concept": {
+                        "商品種類": [
+                            10,
+                            24
+                        ]
+                    },
+                    "relation": {
+                        "attribute": [
+                            {
+                                "term1": [
+                                    "外接光碟機",
+                                    "24"
+                                ],
+                                "cue": "需求",
+                                "term2": [
+                                    "安靜的DVD讀取",
+                                    "38"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "外出用的": {
+                    "concept": {
+                        "功能": [
+                            20
+                        ]
+                    },
+                    "relation": {}
+                },
+                "SLIM": {
+                    "concept": {
+                        "功能": [
+                            33
+                        ]
+                    },
+                    "relation": {
+                        "attribute": [
+                            {
+                                "term1": [
+                                    "外接光碟機",
+                                    "24"
+                                ],
+                                "cue": "需求",
+                                "term2": [
+                                    "SLIM",
+                                    "33"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "安靜的DVD讀取": {
+                    "concept": {
+                        "功能": [
+                            38
+                        ]
+                    },
+                    "relation": {
+                        "attribute": [
+                            {
+                                "term1": [
+                                    "外接光碟機",
+                                    "24"
+                                ],
+                                "cue": "需求",
+                                "term2": [
+                                    "安靜的DVD讀取",
+                                    "38"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "win 10": {
+                    "concept": {
+                        "描述": [
+                            52
+                        ]
+                    },
+                    "relation": {}
+                },
+                "三星": {
+                    "concept": {
+                        "品牌": [
+                            72
+                        ]
+                    },
+                    "relation": {}
+                }
+            }
+        }
+    }
+}

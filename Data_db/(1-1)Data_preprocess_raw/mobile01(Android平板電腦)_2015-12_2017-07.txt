@@ -1,0 +1,1 @@
+Android平板電腦	5194028	＃標題＃Intel SSD 545s系列上市 首款64-layer 3D NAND TLC固態硬碟 Intel固態硬碟產品再度推出了全新的Intel SSD 545s系列，並且是首款搭載64-layer 3D NAND TLC顆粒產品，最高容量規格可達到512GB。這款新系列固態硬碟是採用2.5吋SATA 6Gb/s傳輸介面設計，讀寫速最高可達到550MB/s與500MB/s以及75000iops與85000iops隨機讀寫效能。此外，Intel SSD 545s系列固態硬碟寫入耐用度可達到144TB並提供5年的保固服務。 
