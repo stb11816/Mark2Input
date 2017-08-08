@@ -167,7 +167,7 @@ def RNNOuntput(allSource,date_range,raw_dir,output_dir):
 def main():
 	source=['ptt','mobile01']
 	date_range=['2015-12','2017-07']
-	raw_dir='./Data_db/Data_mark/'
+	raw_dir='./Data_db/(0)Data_mark/'
 	output_dir='./Data_db/Data_RNN/'
 	RNNOuntput(source,date_range,raw_dir,output_dir)
 
