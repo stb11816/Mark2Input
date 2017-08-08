@@ -41,3 +41,13 @@
 
 將平台標記結果轉換成RNN格式
 =========================
+
+執行檔：Mark2RNN.py
+input ：(0)Data_mark
+output：Data_RNN
+
+可依據來源與日期篩選文章，輸出檔案皆為json
+allLabel表示內容包含所有label
+label+數字則表示只顯示特定label，其餘label皆為0，若整篇文章皆該label(也就是整篇皆為0)則不輸出
+json檔內容包含來源資訊，以及兩個list
+
