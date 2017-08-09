@@ -21,20 +21,20 @@
 原始文章label是將原始文章以0,1方式表達字元，以1表達term的位置，不包含空格(ex. 我買了一台iphone7 --> [0,0,0,0,0,1,1,1,1,1,1,1])<br />
 Seed的json檔包含篩選條件下每篇文章所出現的seed，可使用文章ID查找；seed_integrate.json則會累積每次轉換流程所有的seed<br />
 
-2. Mark2CRF_CKIP_articles.py
+### 2. Mark2CRF_CKIP_articles.py
 - input ：(1-1)Data_preprocess_raw
-- output：(2-1)Data_ckip_articles
-- 讀取前處理完成的文章並進行斷詞
-  
-3. Mark2CRF_CKIP_seed.py
-  input ：(1-3)Seeds
-  output：(2-2)Data_ckip_seeds
+- output：(2-1)Data_ckip_articles<br />
+讀取前處理完成的文章並進行斷詞
+  
+### 3. Mark2CRF_CKIP_seed.py
+- input ：(1-3)Seeds
+- output：(2-2)Data_ckip_seeds<br />
   讀取前處理完成的seed並進行斷詞，seed斷詞結果同樣有統整檔(seed_integrate_ckip.json)，統整檔包含完整的斷詞結果
 
-4. Mark2CRF_match.py
-  input ：(1-2)Data_preprocess_label, (2-1)Data_ckip_articles
-  output：(3-1)Data_match, (3-2)Data_match_n
-  不採用原先Term Extraction用seed的比對方法，而是以label與斷詞結果位置產生CRF格式
+### 4. Mark2CRF_match.py
+- input ：(1-2)Data_preprocess_label, (2-1)Data_ckip_articles
+- output：(3-1)Data_match, (3-2)Data_match_n<br />
+  不採用原先Term Extraction用seed的比對方法，而是以label與斷詞結果位置產生CRF格式<br />
   space參數預設為False，表示輸出結果中文章之間不新增斷行，若給予space路徑則輸出具有斷行的內容
 
 
