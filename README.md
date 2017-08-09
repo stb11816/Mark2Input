@@ -43,11 +43,11 @@ Seed的json檔包含篩選條件下每篇文章所出現的seed，可使用文�
 =========================
 
 執行檔：Mark2RNN.py
-input ：(0)Data_mark
-output：Data_RNN
+- input ：(0)Data_mark
+- output：Data_RNN
 
-可依據來源與日期篩選文章，輸出檔案皆為json
-allLabel表示內容包含所有label
-label+數字則表示只顯示特定label，其餘label皆為0，若整篇文章皆該label(也就是整篇皆為0)則不輸出
+可依據來源與日期篩選文章，輸出檔案皆為json<br />
+allLabel表示內容包含所有label<br />
+label+數字則表示只顯示特定label，其餘label皆為0，若整篇文章皆該label(也就是整篇皆為0)則不輸出<br />
 json檔內容包含來源資訊，以及兩個list
 
