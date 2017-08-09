@@ -14,7 +14,7 @@
 
 
 轉換流程：
-1. Mark2CRF_preprocess.py
+### 1. Mark2CRF_preprocess.py
 - input ：(0)Data_mark
 - output：(1-1)Data_preprocess_raw, (1-2)Data_preprocess_label, (1-3)Seeds<br />
 先依據來源和時間挑選標記結果json檔，再分別處理成三個輸出檔案(原始文章, 原始文章label, Seed)<br />  
