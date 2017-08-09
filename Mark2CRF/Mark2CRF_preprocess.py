@@ -4,11 +4,24 @@ from datetime import datetime
 from pprint import pprint
 import glob,json,os,re,sys
 
+def checkGlob(result,path):
+	if len(result)==0:
+		print('Please check path :'+path)
+		sys.exit()
+
+
 def main(allSource,date_range,raw_dir,output_dir,out_dir_seed,out_dir_label):
 	# print('Preprocess start')
-	s_date=datetime.strptime(date_range[0],'%Y-%m')
-	e_date=datetime.strptime(date_range[1],'%Y-%m')
-	# print('range :',s_date,e_date)
+	if len(date_range[0].split('-')) != len(date_range[1].split('-')):
+		print('Datetime format error')
+		sys.exit()
+
+	if len(date_range[0].split('-'))==2 and len(date_range[1].split('-'))==2:
+		DATETIME_FORMAT = "%Y-%m"
+	elif len(date_range[0].split('-'))==3 and len(date_range[1].split('-'))==3:
+		DATETIME_FORMAT = "%Y-%m-%d"
+	s_date=datetime.strptime(date_range[0],DATETIME_FORMAT)
+	e_date=datetime.strptime(date_range[1],DATETIME_FORMAT)
 
 	if not os.path.exists(output_dir):
 		os.mkdir(output_dir)
@@ -25,14 +38,19 @@ def main(allSource,date_range,raw_dir,output_dir,out_dir_seed,out_dir_label):
 
 	for source in allSource:
 		file_paths=glob.glob(r''+raw_dir+source+r'/*/*.json')
-		if len(file_paths)==0:
-			print('Please check input')
-			sys.exit()
+		checkGlob(file_paths,r''+raw_dir+source+r'/*/*.json')
+		# if len(file_paths)==0:
+		# 	print('Please check input')
+		# 	sys.exit()
 
 		for file_path in file_paths:
+			# month=os.path.basename(file_path).replace('.json','')
+			# month=datetime.strptime(month,'%Y-%m')
+
+
 			with open(file_path,'r',encoding='utf-8') as raw:
 				mark_content=json.load(raw)
-			# print(file_path)
+			
 			output_content=''
 			output_seed ={}
 			output_label={}
@@ -45,7 +63,6 @@ def main(allSource,date_range,raw_dir,output_dir,out_dir_seed,out_dir_label):
 				article_content=article_content.replace('／／ｎ',' ').replace('\t',' ')#換行用空格代替
 				
 				if s_date<=article_date<=e_date: #在篩選日期範圍內
-					
 					article_label=[]
 					label_position={}
 					gogo=True
@@ -53,7 +70,6 @@ def main(allSource,date_range,raw_dir,output_dir,out_dir_seed,out_dir_label):
 						pat=re.compile(r'＜＊\w*＊＞(.+?)＜／＊\w*＊＞')
 						result=pat.search(article_content)
 						if result !=None:
-							# print(result)
 							term=result.group()
 							position=result.span()[0]
 							word=term.split('＜／＊')[0].split('＊＞')[1]

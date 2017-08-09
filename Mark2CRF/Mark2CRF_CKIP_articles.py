@@ -3,6 +3,11 @@
 import glob,os,sys
 from ckip import CKIPSegmenter
 
+def checkGlob(result,path):
+	if len(result)==0:
+		print('Please check path :'+path)
+		sys.exit()
+
 def to_ckip(inp):
 	segmenter = CKIPSegmenter('Bolin', 'Bolin') #ckip連線帳戶
 	try:
@@ -29,30 +34,33 @@ def to_ckip(inp):
 def process_Articles(input_path, output_path):
 	# print('Article2CKIP start')
 	articles_path=glob.glob(input_path+r'*.txt')
-	if len(articles_path)==0:
-		print('Please check input path')
-		sys.exit()
+	checkGlob(articles_path,input_path+r'*.txt')
 
 	if not os.path.exists(output_path):
 		os.mkdir(output_path)
 
 	for path in articles_path:
-		with open(path,'r',encoding='utf-8') as raw:
-			contents=raw.readlines()
-
-		output_content=''
-		seq=1
-		for content in contents:
-			article=content.split('\t')[2].replace('\n','')
-			result=to_ckip(article)
-			
-			board_id='\t'.join(content.split('\t')[:2])
-			output_content+=board_id+'\t'+str(seq)+'\t'+str(result[0]).replace(' ','')+'\t'+str(result[1]).replace(' ','')+'\n'
-			seq+=1
-
 		output_name=os.path.basename(path).replace('.txt','')+'_ckip'
-		with open(output_path+output_name+'.txt','w',encoding='utf-8') as out:
-			out.write(output_content)
+		if os.path.exists(output_path+output_name+'.txt'):
+			print(output_path+output_name+'.txt exists!!')
+			continue
+		else:
+			with open(path,'r',encoding='utf-8') as raw:
+				contents=raw.readlines()
+
+			output_content=''
+			seq=1
+			for content in contents:
+				article=content.split('\t')[2].replace('\n','')
+				result=to_ckip(article)
+				
+				board_id='\t'.join(content.split('\t')[:2])
+				output_content+=board_id+'\t'+str(seq)+'\t'+str(result[0]).replace(' ','')+'\t'+str(result[1]).replace(' ','')+'\n'
+				seq+=1
+
+			
+			with open(output_path+output_name+'.txt','w',encoding='utf-8') as out:
+				out.write(output_content)
 	print('Article2CKIP finish')
 
 def main():

@@ -3,6 +3,11 @@
 import glob,os,json,sys
 from ckip import CKIPSegmenter
 
+def checkGlob(result,path):
+	if len(result)==0:
+		print('Please check path :'+path)
+		sys.exit()
+
 def to_ckip(inp):
 	segmenter = CKIPSegmenter('Bolin', 'Bolin') #ckip連線帳戶
 	try:
@@ -29,9 +34,7 @@ def to_ckip(inp):
 def process_Seeds(input_path, output_path):
 	# print('Seed2CKIP start')
 	seed_path=glob.glob(input_path+r'*_seed.json')
-	if len(seed_path)==0:
-		print('Please check input')
-		sys.exit()
+	checkGlob(seed_path,input_path+r'*_seed.json')
 
 	if not os.path.exists(output_path):
 		os.mkdir(output_path)

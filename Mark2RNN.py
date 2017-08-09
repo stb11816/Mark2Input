@@ -3,6 +3,11 @@ from datetime import datetime
 from pprint import pprint
 import glob,json,os,re,sys,copy
 
+def checkGlob(result,path):
+	if len(result)==0:
+		print('Please check path :'+path)
+		sys.exit()
+
 def textIdfChiEngReturnList(text):
 	charList=[]
 	eng=''
@@ -59,6 +64,7 @@ def RNNOuntput(allSource,date_range,raw_dir,output_dir):
 
 	for source in allSource:
 		file_paths=glob.glob(r''+raw_dir+source+r'/*/*.json')
+		checkGlob(file_paths,r''+raw_dir+source+r'/*/*.json')
 		for file_path in file_paths: #某來源下所有檔案
 			# print('processing file :',os.path.basename(file_path))
 			with open(file_path,'r',encoding='utf-8') as raw:

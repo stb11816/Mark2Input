@@ -4,13 +4,15 @@ import glob,os,re,sys
 import json
 from pprint import pprint
 
+def checkGlob(result,path):
+	if len(result)==0:
+		print('Please check path :'+path)
+		sys.exit()
+
 def match(article_paths,label_paths,output_path,space=False): #若輸入space路徑可輸出斷行格式
 	# article_paths=glob.glob(r'Data_db/(2-1)Data_ckip_articles/*.txt')
-	json_paths  =glob.glob(label_paths+r'*_label.json')
-	
-	if len(json_paths)==0:
-		print('Please check input')
-		sys.exit()
+	json_paths=glob.glob(label_paths+r'*_label.json')
+	checkGlob(json_paths,label_paths+r'*_label.json')
 
 	if not os.path.exists(output_path):
 		os.mkdir(output_path)
