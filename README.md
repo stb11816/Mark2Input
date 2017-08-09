@@ -18,7 +18,7 @@
 - input ：(0)Data_mark
 - output：(1-1)Data_preprocess_raw, (1-2)Data_preprocess_label, (1-3)Seeds
 先依據來源和時間挑選標記結果json檔，再分別處理成三個輸出檔案(原始文章, 原始文章label, Seed)  
-原始文章label是將原始文章以0,1方式表達字元，以1表達term的位置，不包含空格(ex. 我買了一台iphone7 --> [0,0,0,0,0,1,1,1,1,1,1,1])
+原始文章label是將原始文章以0,1方式表達字元，以1表達term的位置，不包含空格(ex. 我買了一台iphone7 --> [0,0,0,0,0,1,1,1,1,1,1,1])<br />
 Seed的json檔包含篩選條件下每篇文章所出現的seed，可使用文章ID查找；seed_integrate.json則會累積每次轉換流程所有的seed
 
 2. Mark2CRF_CKIP_articles.py
