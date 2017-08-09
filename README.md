@@ -4,10 +4,10 @@
 將平台標記結果轉換成CRF格式
 ==========
 資料夾(Mark2CRF)：轉換流程所需要的模組<br />
-資料夾(Data_db) ：轉換CRF的輸入、輸出以及中間輸出
+資料夾(Data_db) ：轉換CRF的輸入、輸出以及中間輸出<br />
 
 
-執行檔：Mark2CRF_start.py
+執行檔：Mark2CRF_start.py<br />
 參數source和date_range：可用來篩選欲處理的資料<br />
 參數date_raw：標記結果資料夾位置，底下包含不同來源或不同月份的json檔(ex. Data_mark/ptt/MobileComm/2017-08.json)<br />
 其餘路徑參數皆為轉換流程的中間輸出位置<br />
