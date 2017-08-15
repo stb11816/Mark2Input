@@ -43,7 +43,7 @@ def textIdfChiEngReturnList(text):
 
 
 def RNNOuntput(allSource,date_range,raw_dir,output_dir):
-	concept_dic=concept_conceptIDDict = {'商品種類':'1','品牌':'2','型號':'3','規格':'4','規格(硬體)':'4','描述':'5','描述(描述規格)':'5','評論':'6','評論!':'6','功能':'7','功能(用途)':'7','功能(可以做到什麼)':'7','衍生商品':'8','解決方案':'9','金額':'10','正面':'11'}
+	concept_dic = {'商品種類':'1','品牌':'2','型號':'3','規格':'4','規格(硬體)':'4','描述':'5','描述(描述規格)':'5','評論':'6','評論!':'6','功能':'7','功能(用途)':'7','功能(可以做到什麼)':'7','衍生商品':'8','解決方案':'9','金額':'10','正面':'11'}
 	print('source :'+str(allSource))
 	print('date range :'+str(date_range))
 	if len(date_range[0].split('-')) != len(date_range[1].split('-')):

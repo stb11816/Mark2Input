@@ -9,7 +9,7 @@ def checkGlob(result,path):
 		print('Please check path :'+path)
 		sys.exit()
 
-def match(article_paths,label_paths,output_path,space=False): #若輸入space路徑可輸出斷行格式
+def match(article_paths,label_paths,output_path,mod,space=False): #若輸入space路徑可輸出斷行格式
 	# article_paths=glob.glob(r'Data_db/(2-1)Data_ckip_articles/*.txt')
 	json_paths=glob.glob(label_paths+r'*_label.json')
 	checkGlob(json_paths,label_paths+r'*_label.json')
@@ -44,20 +44,36 @@ def match(article_paths,label_paths,output_path,space=False): #若輸入space路
 			for seg,pos in zip(article_seg,article_pos):
 				if len(seg)==1: #分詞結果比對label範圍
 					term_range =[position]
-					# print(seg,term_range)
 					match_label=labels[term_range[0]]
 				else:
 					term_range =[position,position+len(seg)-1]
 					match_label=labels[term_range[0]:term_range[1]+1]
 				position+=len(seg)
-				if '0' not in match_label: #根據label範圍值判斷true or false
-					tf='true'
-				else:
-					tf='false'
+				# if '0' not in match_label: #根據label範圍值判斷true or false
+				# 	tf='true'
+				# else:
+				# 	tf='false'
+				# print(seg,match_label)
+				if mod=='bio':
+					if match_label[0]=='B': #開頭為b
+						tf='B'
+					elif 'O' not in match_label and 'B' not in match_label: #皆為I
+						tf='I'
+					elif 'I' not in match_label and 'B' not in match_label: #皆為O
+						tf='O'
+				elif mod=='tf':
+					if match_label[0]=='B': #開頭為b
+						tf='true'
+					elif 'O' not in match_label and 'B' not in match_label: #皆為I
+						tf='true'
+					elif 'I' not in match_label and 'B' not in match_label: #皆為O
+						tf='false'
+				# print(seg,match_label,tf)
 
 				#輸出格式 PTT_mark M.1496853071.A.F2A 1 預算(Na) 預算 Na false
 				content=' '.join([board_name,aID,seq,seg+'('+pos+')',pos,tf])+'\n'
 				article_content+=content
+
 				
 			if output_content==[]:
 				output_content.append(article_content)
@@ -67,13 +83,13 @@ def match(article_paths,label_paths,output_path,space=False): #若輸入space路
 		# article loop end
 		
 		#預設輸出無斷航版
-		with open(output_path+file_name+'_train.data','w',encoding='utf-8') as out:
+		with open(output_path+file_name+'_train_'+mod+'.data','w',encoding='utf-8') as out:
 			for con in output_content:
 				if con !='\n':
 					out.write(con)
 
 		if space != False: #是否輸出斷行版
-			with open(space+file_name+'_train.data','w',encoding='utf-8') as out_s:
+			with open(space+file_name+'_train_'+mod+'.data','w',encoding='utf-8') as out_s:
 				for con in output_content:
 					out_s.write(con)
 
@@ -81,10 +97,10 @@ def match(article_paths,label_paths,output_path,space=False): #若輸入space路
 
 
 def main():
-	# article_paths='Data_db/(2-1)Data_ckip_articles/'
-	# label_paths  ='Data_db/(1-2)Data_preprocess_label/'
-	# output_path  ='./Data_db/(3)Data_match/'
-	match(article_paths,label_paths,output_path)
+	article_paths='D:/Term_Extraction/Mark2Input(tf)/Data_db/(2-1)Data_ckip_articles/'
+	label_paths  ='D:/Term_Extraction/Mark2Input(tf)/Data_db/(1-2)Data_preprocess_label(bio)/'
+	output_path  ='D:/Term_Extraction/Mark2Input(tf)/Data_db/(3-1)Data_match/'
+	match(article_paths,label_paths,output_path,'bio')
 
 if __name__ == '__main__':
 	main()
