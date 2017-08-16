@@ -53,7 +53,7 @@ def match(article_paths,label_paths,output_path,mod,space=False): #若輸入spac
 				# 	tf='true'
 				# else:
 				# 	tf='false'
-				# print(seg,match_label)
+
 				if mod=='bio':
 					if match_label[0]=='B': #開頭為b
 						tf='B'
@@ -61,6 +61,11 @@ def match(article_paths,label_paths,output_path,mod,space=False): #若輸入spac
 						tf='I'
 					elif 'I' not in match_label and 'B' not in match_label: #皆為O
 						tf='O'
+					elif 'I' in match_label and 'O' in match_label: #有I也有O
+						tf='I'
+					elif 'B' in match_label and 'O' in match_label: #有I也有O
+						tf='B'
+
 				elif mod=='tf':
 					if match_label[0]=='B': #開頭為b
 						tf='true'
@@ -68,6 +73,10 @@ def match(article_paths,label_paths,output_path,mod,space=False): #若輸入spac
 						tf='true'
 					elif 'I' not in match_label and 'B' not in match_label: #皆為O
 						tf='false'
+					elif 'I' in match_label and 'O' in match_label: #有I也有O
+						tf='true'
+					elif 'B' in match_label and 'O' in match_label: #有I也有O
+						tf='true'
 				# print(seg,match_label,tf)
 
 				#輸出格式 PTT_mark M.1496853071.A.F2A 1 預算(Na) 預算 Na false
@@ -83,13 +92,13 @@ def match(article_paths,label_paths,output_path,mod,space=False): #若輸入spac
 		# article loop end
 		
 		#預設輸出無斷航版
-		with open(output_path+file_name+'_train_'+mod+'.data','w',encoding='utf-8') as out:
+		with open(output_path+file_name+'_'+mod+'.data','w',encoding='utf-8') as out:
 			for con in output_content:
 				if con !='\n':
 					out.write(con)
 
 		if space != False: #是否輸出斷行版
-			with open(space+file_name+'_train_'+mod+'.data','w',encoding='utf-8') as out_s:
+			with open(space+file_name+'_'+mod+'.data','w',encoding='utf-8') as out_s:
 				for con in output_content:
 					out_s.write(con)
 
@@ -97,9 +106,9 @@ def match(article_paths,label_paths,output_path,mod,space=False): #若輸入spac
 
 
 def main():
-	article_paths='D:/Term_Extraction/Mark2Input(tf)/Data_db/(2-1)Data_ckip_articles/'
-	label_paths  ='D:/Term_Extraction/Mark2Input(tf)/Data_db/(1-2)Data_preprocess_label(bio)/'
-	output_path  ='D:/Term_Extraction/Mark2Input(tf)/Data_db/(3-1)Data_match/'
+	article_paths='D:/Term_Extraction/Mark2Input/Data_db/(2-1)Data_ckip_articles/'
+	label_paths  ='D:/Term_Extraction/Mark2Input/Data_db/(1-2)Data_preprocess_label/'
+	output_path  ='D:/Term_Extraction/Mark2Input/Data_db/(3-1)Data_match/'
 	match(article_paths,label_paths,output_path,'bio')
 
 if __name__ == '__main__':
